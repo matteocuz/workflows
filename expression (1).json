@@ -1,0 +1,451 @@
+{
+  "last_node_id": 20,
+  "last_link_id": 13,
+  "nodes": [
+    {
+      "id": 16,
+      "type": "Note",
+      "pos": {
+        "0": 1892,
+        "1": 831
+      },
+      "size": {
+        "0": 483.8179931640625,
+        "1": 161.2032470703125
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Command Description\n1 = 5:5\n0 = 3:5\n\n[Motion index] = [Changing frame length] : [Length of frames waiting for next motion]\n\nfor example, first line -> 1 = 5:5\nChange over 5 frames with motion 1, and wait for the next motion for 5 frames"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 17,
+      "type": "Note",
+      "pos": {
+        "0": 1629,
+        "1": 996
+      },
+      "size": {
+        "0": 227.1239471435547,
+        "1": 58
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "motion 1"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": {
+        "0": 1373,
+        "1": 272
+      },
+      "size": {
+        "0": 223.20394897460938,
+        "1": 314
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            11
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "slot_index": 1,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Screenshot 2024-02-29 114512.png",
+        "image"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "VHS_VideoCombine",
+      "pos": {
+        "0": 2163,
+        "1": 203
+      },
+      "size": [
+        261.79998779296875,
+        662.5199829101562
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 8
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 15,
+        "loop_count": 0,
+        "filename_prefix": "AdvancedLivePortrait",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": true,
+          "params": {
+            "filename": "AdvancedLivePortrait_01067.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 15
+          }
+        }
+      }
+    },
+    {
+      "id": 7,
+      "type": "AdvancedLivePortrait",
+      "pos": {
+        "0": 1889,
+        "1": 270
+      },
+      "size": {
+        "0": 235.1999969482422,
+        "1": 523.0364379882812
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_images",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "link": 10,
+          "shape": 7
+        },
+        {
+          "name": "driving_images",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            8,
+            12
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AdvancedLivePortrait"
+      },
+      "widgets_values": [
+        0,
+        0,
+        1.7000000000000002,
+        true,
+        false,
+        true,
+        "1 = 5:5\n0 = 3:5"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 2576,
+        "1": 382
+      },
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 12
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 18,
+      "type": "Note",
+      "pos": {
+        "0": 1373,
+        "1": 625
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "orginal src : motion 0\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 20,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 1354,
+        "1": 648
+      },
+      "size": {
+        "0": 263.0578918457031,
+        "1": 376.766357421875
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 13
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 15,
+      "type": "ExpressionEditor",
+      "pos": {
+        "0": 1644,
+        "1": 270
+      },
+      "size": {
+        "0": 210,
+        "1": 690
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "link": 11,
+          "shape": 7
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            13
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "links": [
+            10
+          ],
+          "slot_index": 1,
+          "shape": 3
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor"
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15,
+        0,
+        1,
+        1,
+        "OnlyExpression",
+        1.7
+      ]
+    }
+  ],
+  "links": [
+    [
+      8,
+      7,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      10,
+      15,
+      1,
+      7,
+      1,
+      "EDITOR_LINK"
+    ],
+    [
+      11,
+      3,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      7,
+      0,
+      19,
+      0,
+      "IMAGE"
+    ],
+    [
+      13,
+      15,
+      0,
+      20,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.620921323059155,
+      "offset": [
+        -1168.3987358478958,
+        -3.179774424300035
+      ]
+    }
+  },
+  "version": 0.4
+}
